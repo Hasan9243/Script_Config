@@ -1,0 +1,35 @@
+{% extends "script_app/home.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block start_block %}
+
+
+<style>
+    img {
+      border: 0.5px solid #555;
+      margin-top:30px;
+    }
+
+
+    h3{
+        font-size: 25px;
+        font-style: italic;
+        font-Weight: bold;
+        text-align: center;
+    }
+
+ 
+</style>
+
+<h3>Script Generator</h3>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Generate Script</button>
+</form>
+
+
+
+     
+{% endblock %}
+

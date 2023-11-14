@@ -1,0 +1,18 @@
+{% extends "script_app/home.html" %}
+{% load crispy_forms_tags %}
+{% block start_block %}
+
+    <title>{{title}}</title>
+    
+    
+  <form method="POST" novalidate>
+	{% csrf_token %}
+	<h2>Login</h2>
+	{{form.as_p}}
+	<input type="submit" value="Login" />
+</form>
+
+
+
+
+{% endblock %}

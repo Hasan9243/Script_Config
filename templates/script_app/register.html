@@ -1,0 +1,23 @@
+{% extends "script_app/home.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block start_block %}
+
+<title>{{title}}</title>
+
+  {% if registered %}
+    <div class="alert alert-success">Congratulations!!! Registration is successful</div>
+
+  {% else %}
+    <form enctype = "multipart/form-data" method="POST">
+
+      <h2>Register</h2>
+      {{user_form.as_p}}
+      {{user_info_form.as_p}}
+      {% csrf_token %}
+
+      <input type = "submit" name="submit" value="register">
+
+    </form>
+  {% endif %}
+{% endblock %}

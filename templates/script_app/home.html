@@ -1,0 +1,106 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{{title}}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+  <style>
+    #footer {
+        position: fixed;
+        padding: 10px 10px 0px 10px;
+        bottom: 10px;
+        width: 100%;
+        /* Height of the footer*/
+        height: 40px;
+        background: grey;
+      
+    }
+    .par{
+        font-weight:bold;
+        font-style:italic;
+        color:white;
+        font-size:13px;
+        text-align:center;
+    }
+    a:link {
+      color: green;
+      background-color: transparent;
+      text-decoration: none;
+    }
+    a:visited {
+      color: purple;
+      background-color: transparent;
+      text-decoration: none;
+    }
+    a:hover {
+      color: yellow;
+      background-color: transparent;
+      text-decoration: underline;
+    }
+
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Generator 1.0</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="{% url 'script_app:home' %}">Home</a></li>
+      
+ 
+      {% if user.is_authenticated %}
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{% url 'script_app:profile' %}">Hi {{user.first_name | title }}</a></li>
+       
+        <li><a href="{% url 'script_app:logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>
+
+      
+      <li><a href="{% url 'script_app:portal' %}">Main Configuration</a></li>
+      <li><a href="{% url 'script_app:vrf_client'%}">VRF Client</a></li>
+      <li><a href="{% url 'script_app:bgp_peer'%}">eBGP Peer</a></li>
+
+    </ul>
+    {% else %}
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="{% url 'script_app:register' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="{% url 'script_app:login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+
+    {% endif %}
+  </div>
+</nav>
+  
+<div class="container">
+
+  {% block start_block %}
+
+    <h3>Script Generator</h3>
+    <p>Script Generator </p>
+  
+  {% endblock %}
+
+</div>
+
+
+
+<div id="footer">
+  <p class='par'>Copyright © 2023 All Rights Reserved to <a href="https://www.linkedin.com/in/hasan1617/">Md. Hasan_L3C1116</a></p>
+</div>
+</body>
+</html>

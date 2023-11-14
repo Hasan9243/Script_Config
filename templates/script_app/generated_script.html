@@ -1,0 +1,42 @@
+{% extends "script_app/home.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block start_block %}
+
+
+<style>
+    img {
+      border: 0.5px solid #555;
+      margin-top:30px;
+    }
+
+
+    h3{
+        font-size: 25px;
+        font-style: italic;
+        font-Weight: bold;
+        text-align: center;
+    }
+
+ 
+</style>
+
+
+<h3>Generated Script</h3>
+
+    <pre> Username: {{user.username}}</pre>
+    <pre> interface GigabitEthernet {{ script.Interface_Number }}.{{script.VLAN}}</pre>
+    <pre> vlan-type dot1q {{script.VLAN}}</pre>
+    <pre> description {{script.Description}}</pre>
+    <pre> ip address {{script.IP_Address}} {{script.Subnet_Mask}}</pre>
+    <pre>"Statistic Enable"</pre>
+    <pre>"bgp 23688"</pre>
+    <pre> ipv4 family unicast </pre>
+    <pre>"network" {{script.Network_Address}} {{script.Network_Mask}}</pre>
+    <a href="{% url 'script_app:portal' %}" class="btn btn-warning btn-sm"> Clear</a>
+
+
+
+     
+{% endblock %}
+

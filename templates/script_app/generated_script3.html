@@ -1,0 +1,46 @@
+{% extends "script_app/home.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block start_block %}
+
+
+<style>
+    img {
+      border: 0.5px solid #555;
+      margin-top:30px;
+    }
+
+
+    h3{
+        font-size: 25px;
+        font-style: italic;
+        font-Weight: bold;
+        text-align: center;
+    }
+
+ 
+</style>
+
+
+<h3>Generated Script for BGP</h3>
+
+
+
+    <pre>"bgp 23688", </pre>
+   
+    <pre> peer {{script.Remote_Peer_IP}} as-number {{script.Remote_As}}",</pre>
+    <pre> peer {{script.Remote_Peer_IP}} Description {{bgp_description}}",</pre>
+    <pre> peer {{script.Remote_Peer_IP}} enable </pre>
+    <pre> peer {{script.Remote_Peer_IP}} public-as-only </pre>
+    <pre> peer {{script.Remote_Peer_IP}} ip-prefix {{script.In_Prefix_Name}} import </pre>
+    <pre> peer {{script.Remote_Peer_IP}} ip-prefix {{script.Out_Prefix_Name}} export </pre>
+    <pre> peer {{script.Remote_Peer_IP}} default-route-advertise </pre>
+    <pre> peer {{script.Remote_Peer_IP}} keep-all-routes </pre>
+
+    <pre> ip ip-prefix {{script.In_Prefix_Name}} index 10 permit {{script.Client_Public_Ip}} {{Mask_Length}} </pre>
+    <pre> ip ip-prefix {{script.Out_Prefix_Name}} index 10 permit 0.0.0.0 0 </pre>
+
+    <a href="{% url 'script_app:bgp_peer' %}" class="btn btn-warning btn-sm"> Clear</a>
+
+{% endblock %}
+
